@@ -20,7 +20,7 @@ alias lr="ls -lR"
 alias lt="ls -ltr"
 
 alias v="vim"
-alias g="grep -rI"
+alias g="grep -rIi"
 
 alias erc="v ~/.bashrc"
 alias evrc="v ~/.vimrc"
