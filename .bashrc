@@ -28,3 +28,7 @@ alias s="source ~/.bashrc"
 
 alias gs="git status"
 alias gb="git branch"
+alias gd="git diff"
+
+export NVM_DIR="/Users/tylergreen/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

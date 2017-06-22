@@ -16,6 +16,12 @@ colorscheme desert
 set tabstop=2
 set expandtab
 
+" Show line numbers
+set nu
+
+" Enable auto-indent
+set autoindent
+
 " Always show status line
 set laststatus=2
 
