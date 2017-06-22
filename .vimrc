@@ -19,6 +19,8 @@ set expandtab
 " Show line numbers
 set nu
 
+set hlsearch
+
 " Enable auto-indent
 set autoindent
 
