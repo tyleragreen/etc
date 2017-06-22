@@ -11,13 +11,19 @@ export PS1="\u@\h: \w > "
 #===========================
 set -o vi # vim
 
+# Ignore commands starting with spaces and duplicates in .bash_history
+export HISTCONTROL=ignoreboth
+
 #===========================
 # Aliases
 #===========================
 
+# Bash basics
 alias ll="ls -la"
 alias lr="ls -lR"
 alias lt="ls -ltr"
+alias u="cd .."
+alias hi="history"
 
 alias v="vim"
 alias g="grep -rIi"
