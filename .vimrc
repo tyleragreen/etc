@@ -2,15 +2,20 @@
 " .vimrc
 
 " Set search highlight color
-" hi Search ctermfg=Black ctermbg=Yellow
+hi Search ctermfg=Black ctermbg=Yellow
 
 function! SyntaxItem()
   return synIDattr(synID(line("."),col("."),1),"name")
 endfunction
 
+" Syntax highlighting
+syntax on
+colorscheme desert
+
 " Always show status line
 set laststatus=2
 
+" Status line setup
 if has('statusline')
   set statusline=%#Question#                   " set highlighting
   set statusline+=%-2.2n\                      " buffer number
@@ -32,4 +37,3 @@ endif
 " Aliases
 :command Q q
 :command W w
-

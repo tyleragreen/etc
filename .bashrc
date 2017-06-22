@@ -25,3 +25,6 @@ alias g="grep -rIi"
 alias erc="v ~/.bashrc"
 alias evrc="v ~/.vimrc"
 alias s="source ~/.bashrc"
+
+alias gs="git status"
+alias gb="git branch"
