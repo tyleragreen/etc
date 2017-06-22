@@ -20,8 +20,8 @@ export HISTCONTROL=ignoreboth
 
 # Bash basics
 alias ll="ls -la"
-alias lr="ls -lR"
-alias lt="ls -ltr"
+alias llr="ls -lR"
+alias llt="ls -ltr"
 alias u="cd .."
 alias hi="history"
 
@@ -29,7 +29,9 @@ alias v="vim"
 alias g="grep -rIi"
 
 alias erc="v ~/.bashrc"
+alias crc="cp ~/.bashrc ."
 alias evrc="v ~/.vimrc"
+alias cvrc="cp ~/.vimrc ."
 alias s="source ~/.bashrc"
 
 alias gs="git status"

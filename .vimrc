@@ -15,10 +15,12 @@ colorscheme desert
 " Replace tabs with spaces
 set tabstop=2
 set expandtab
+set shiftwidth=2
 
 " Show line numbers
 set nu
 
+" Highlight search results
 set hlsearch
 
 " Enable auto-indent
