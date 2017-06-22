@@ -12,6 +12,10 @@ endfunction
 syntax on
 colorscheme desert
 
+" Replace tabs with spaces
+set tabstop=2
+set expandtab
+
 " Always show status line
 set laststatus=2
 
