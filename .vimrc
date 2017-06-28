@@ -23,6 +23,10 @@ set nu
 " Highlight search results
 set hlsearch
 
+" Experiment section from https://github.com/tpope/vim-sensible
+set incsearch
+set autoread
+
 " Enable auto-indent
 set autoindent
 
@@ -51,3 +55,5 @@ endif
 " Aliases
 :command Q q
 :command W w
+:command Sp set paste
+:command Snp set nopaste
