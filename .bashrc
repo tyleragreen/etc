@@ -22,7 +22,9 @@ export HISTCONTROL=ignoreboth
 # Aliases
 #==============================================================
 
+#--------------------------------------------------------------
 # Bash basics
+
 alias ll="ls -la"
 alias llr="ls -lR"
 alias llt="ls -ltr"
@@ -41,11 +43,15 @@ alias evrc="v ~/.vimrc"
 alias cvrc="cp ~/.vimrc ."
 alias s="source ~/.bashrc"
 
+#--------------------------------------------------------------
+# Git
+
 alias gs="git status"
 alias gb="git branch"
 alias gd="git diff"
 alias ga="git add"
 alias gc="git commit"
+alias gg="git grep"
 
 #--------------------------------------------------------------
 # Node.js
