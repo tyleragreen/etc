@@ -51,6 +51,7 @@ alias gb="git branch"
 alias gd="git diff"
 alias ga="git add"
 alias gc="git commit"
+alias gp="git push"
 alias gg="git grep"
 
 #--------------------------------------------------------------
