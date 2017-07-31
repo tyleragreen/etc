@@ -56,7 +56,7 @@ alias gd="git diff"
 alias ga="git add"
 alias gc="git commit"
 alias gp="git push"
-alias gg="git grep"
+alias gg="git grep -i"
 
 #--------------------------------------------------------------
 # Node.js
