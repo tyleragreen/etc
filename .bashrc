@@ -14,6 +14,8 @@ parse_git_branch() {
 
 export PS1="\u@\h: \w \$(parse_git_branch) > "
 
+export EDITOR=/usr/bin/vim
+
 #==============================================================
 # Input mode
 #==============================================================
@@ -57,6 +59,7 @@ alias ga="git add"
 alias gc="git commit"
 alias gp="git push"
 alias gg="git grep -i"
+alias gitignore="git config --global core.excludesfile ~/.gitignore"
 
 #--------------------------------------------------------------
 # Node.js
