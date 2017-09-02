@@ -1,8 +1,15 @@
 " Tyler Green
 " .vimrc
 
-" Set search highlight color
-hi Search ctermfg=Black ctermbg=Yellow
+" Install pathogen
+" mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+" Install vim-scala
+" cd ~/.vim/bundle && git clone https://github.com/derekwyatt/vim-scala
+" Install vim-javascript-syntax
+" git clone https://github.com/jelera/vim-javascript-syntax.git ~/.vim/bundle/vim-javascript-syntax
+
+" Actually enable pathogen
+execute pathogen#infect()
 
 function! SyntaxItem()
   return synIDattr(synID(line("."),col("."),1),"name")
