@@ -60,6 +60,7 @@ alias ga="git add"
 alias gc="git commit"
 alias gp="git push"
 alias gg="git grep -i"
+alias gcam="git commit -am"
 alias gitignore="git config --global core.excludesfile ~/.gitignore"
 
 #--------------------------------------------------------------
