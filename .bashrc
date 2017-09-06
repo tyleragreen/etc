@@ -62,7 +62,16 @@ alias gp="git push"
 alias gpu="git pull"
 alias gg="git grep -i"
 alias gcam="git commit -am"
+
+# These two commands modify the ~/.gitconfig file
 alias gitignore="git config --global core.excludesfile ~/.gitignore"
+# This command is intended to make rebasing work on OS X
+# I COULDNT GET THIS TO WORK, BUT MAYBE ILL START A REBASING MEETUP AND REVISIT THIS IN THE FUTURE
+# A few sources:
+# https://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
+# https://stackoverflow.com/questions/21889741/git-rebase-continue-wont-work
+# https://stackoverflow.com/questions/15136590/what-happened-to-my-these-several-times-git-pull-rebase-with-the-error-your-l
+alias gitdistrustctime="git config --global core.trustctime false"
 
 #--------------------------------------------------------------
 # Node.js
