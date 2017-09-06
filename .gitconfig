@@ -1,0 +1,6 @@
+[user]
+	name = Tyler Green
+	email = tyler.green@intersection.com
+[core]
+	excludesfile = /Users/tyleragreen/.gitignore
+	trustctime = false
