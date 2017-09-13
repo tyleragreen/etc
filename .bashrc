@@ -53,6 +53,7 @@ alias s="source ~/.bashrc"
 # Git
 
 alias gs="git status"
+alias gl="git log"
 alias gb="git branch"
 alias gd="git diff"
 alias gdl="git diff --color=always | less -r"
