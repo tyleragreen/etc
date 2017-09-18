@@ -5,8 +5,15 @@
 " mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 " Install vim-scala
 " cd ~/.vim/bundle && git clone https://github.com/derekwyatt/vim-scala
+"
 " Install vim-javascript-syntax
 " git clone https://github.com/jelera/vim-javascript-syntax.git ~/.vim/bundle/vim-javascript-syntax
+"
+" Install vim-erlang
+" git clone https://github.com/vim-erlang/vim-erlang-runtime.git ~/.vim/bundle/vim-erlang-runtime
+
+" Install vim-elixir
+" git clone https://github.com/elixir-lang/vim-elixir.git ~/.vim/bundle/vim-elixir
 
 " Actually enable pathogen
 execute pathogen#infect()
