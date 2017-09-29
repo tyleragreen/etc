@@ -71,3 +71,7 @@ endif
 :command W w
 :command Sp set paste
 :command Snp set nopaste
+
+" Configure white space characters
+" This can be turned on with :set list and turned off with :set nolist
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
