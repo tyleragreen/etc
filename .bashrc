@@ -95,3 +95,10 @@ alias start-pg='pg_ctl -l $PGDATA/server.log start'
 alias stop-pg='pg_ctl stop -m fast'
 alias pg-status='pg_ctl status'
 alias restart-pg='pg_ctl reload'
+
+#--------------------------------------------------------------
+# Notetime
+# https://github.com/tyleragreen/notetime
+
+alias nn="note-new"
+alias nd="note-deploy"
