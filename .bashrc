@@ -102,3 +102,4 @@ alias restart-pg='pg_ctl reload'
 
 alias nn="note-new"
 alias nd="note-deploy"
+alias no="note-open"
