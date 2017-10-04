@@ -103,3 +103,15 @@ alias restart-pg='pg_ctl reload'
 alias nn="note-new"
 alias nd="note-deploy"
 alias no="note-open"
+
+#--------------------------------------------------------------
+# Python
+
+alias python="python3"
+alias pip="pip3"
+
+#--------------------------------------------------------------
+# Docker
+alias ds="docker stop"
+alias dps="docker ps"
+alias dcu="docker-compose up"
