@@ -82,8 +82,8 @@ alias ns="npm start"
 alias vp="v package.json"
 
 # Load nvm
-export NVM_DIR="/Users/tylergreen/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
+#export NVM_DIR="/Users/tylergreen/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
 
 #--------------------------------------------------------------
 # Postgres
