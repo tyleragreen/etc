@@ -63,6 +63,7 @@ alias gp="git push"
 alias gpu="git pull"
 alias gg="git grep -i"
 alias gcam="git commit -am"
+alias gcm="git commit -m"
 
 # These two commands modify the ~/.gitconfig file
 alias gitignore="git config --global core.excludesfile ~/.gitignore"
@@ -116,3 +117,5 @@ alias ds="docker stop"
 alias dps="docker ps"
 alias dcu="docker-compose up"
 alias dc="docker-compose"
+
+alias dj="docker-compose run web python manage.py"
