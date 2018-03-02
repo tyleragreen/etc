@@ -58,12 +58,13 @@ alias gb="git branch"
 alias gd="git diff"
 alias gdl="git diff --color=always | less -r"
 alias ga="git add"
-alias gc="git commit"
 alias gp="git push"
 alias gpu="git pull"
 alias gg="git grep -i"
 alias gcam="git commit -am"
 alias gcm="git commit -m"
+alias gc="git checkout"
+alias gcb="git checkout -b"
 
 # These two commands modify the ~/.gitconfig file
 alias gitignore="git config --global core.excludesfile ~/.gitignore"
@@ -118,3 +119,7 @@ alias dcu="docker-compose up"
 alias dc="docker-compose"
 
 alias dj="docker-compose run web python manage.py"
+
+#--------------------------------------------------------------
+# Navigation
+alias tp="cd ~/Documents/repos/transit/projects"
