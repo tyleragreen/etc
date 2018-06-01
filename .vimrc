@@ -1,22 +1,6 @@
 " Tyler Green
 " .vimrc
 
-" Install pathogen
-" mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-" Install vim-scala
-" cd ~/.vim/bundle && git clone https://github.com/derekwyatt/vim-scala
-"
-" Install vim-javascript-syntax
-" git clone https://github.com/jelera/vim-javascript-syntax.git ~/.vim/bundle/vim-javascript-syntax
-"
-" Install vim-erlang
-" git clone https://github.com/vim-erlang/vim-erlang-runtime.git ~/.vim/bundle/vim-erlang-runtime
-
-" Install vim-elixir
-" git clone https://github.com/elixir-lang/vim-elixir.git ~/.vim/bundle/vim-elixir
-
-" Actually enable pathogen
-execute pathogen#infect()
 
 function! SyntaxItem()
   return synIDattr(synID(line("."),col("."),1),"name")
@@ -75,3 +59,24 @@ endif
 " Configure white space characters
 " This can be turned on with :set list and turned off with :set nolist
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
+" Update time was lowered to help airblade/vim-gutter reload more often
+" https://github.com/airblade/vim-gitgutter#getting-started
+set updatetime=100
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'derekwyatt/vim-scala'
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'vim-erlang/vim-erlang-runtime'
+Plug 'elixir-lang/vim-elixir'
+call plug#end()
