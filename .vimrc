@@ -71,13 +71,14 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'derekwyatt/vim-scala'
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+" Syntax Highlighting
+Plug 'derekwyatt/vim-scala'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'elixir-lang/vim-elixir'
-Plug 'vim-airline/vim-airline'
 call plug#end()
