@@ -79,4 +79,5 @@ Plug 'airblade/vim-gitgutter'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'elixir-lang/vim-elixir'
+Plug 'vim-airline/vim-airline'
 call plug#end()
