@@ -56,3 +56,6 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'elixir-lang/vim-elixir'
 call plug#end()
+
+" ctrlp customizations
+let g:ctrlp_show_hidden = 1
