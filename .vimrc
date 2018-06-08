@@ -7,6 +7,9 @@
 "------------------------------------------------------------------------------
 let mapleader = " "
 
+set wildmenu
+set wildmode=longest:full,full
+
 " Syntax highlighting
 syntax on
 colorscheme desert
