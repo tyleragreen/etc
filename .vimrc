@@ -57,5 +57,13 @@ Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'elixir-lang/vim-elixir'
 call plug#end()
 
+"------------------------------------------------------------------------------
 " ctrlp customizations
+"------------------------------------------------------------------------------
 let g:ctrlp_show_hidden = 1
+
+"------------------------------------------------------------------------------
+" airline customizations
+"------------------------------------------------------------------------------
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
