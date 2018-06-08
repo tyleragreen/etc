@@ -2,6 +2,11 @@
 " .vimrc
 
 
+"------------------------------------------------------------------------------
+" SET LEADER
+"------------------------------------------------------------------------------
+let mapleader = " "
+
 " Syntax highlighting
 syntax on
 colorscheme desert
@@ -67,3 +72,15 @@ let g:ctrlp_show_hidden = 1
 "------------------------------------------------------------------------------
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
+
+"------------------------------------------------------------------------------
+" Buffers like tabs
+"------------------------------------------------------------------------------
+nmap <leader>T :enew<CR>
+
+nmap <leader>n :bnext<CR>
+nmap <leader>b :bprevious<CR>
+
+nmap <leader>l :ls<CR>
+
+nmap <leader>q :bp <BAR> bd #<cr>
