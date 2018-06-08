@@ -87,3 +87,6 @@ nmap <leader>b :bprevious<CR>
 nmap <leader>l :ls<CR>
 
 nmap <leader>q :bp <BAR> bd #<cr>
+
+nmap <leader>h <C-W><C-H>
+nmap <leader>l <C-W><C-L>
