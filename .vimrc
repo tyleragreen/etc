@@ -58,12 +58,29 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
+"Plug 'w0rp/ale' " this is another syntax checker, but it requires vim8 (and
+"is asynchronous!)
+Plug 'vim-syntastic/syntastic'
 " Syntax Highlighting
 Plug 'derekwyatt/vim-scala'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'elixir-lang/vim-elixir'
 call plug#end()
+
+"------------------------------------------------------------------------------
+" Syntastic customizations
+"------------------------------------------------------------------------------
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 
 "------------------------------------------------------------------------------
 " ctrlp customizations
@@ -90,3 +107,9 @@ nmap <leader>q :bp <BAR> bd #<cr>
 
 nmap <leader>h <C-W><C-H>
 nmap <leader>l <C-W><C-L>
+
+"------------------------------------------------------------------------------
+" Toggle paste mode
+"------------------------------------------------------------------------------
+nmap <leader>p :set paste<CR>
+nmap <leader>np :set nopaste<CR>
