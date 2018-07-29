@@ -59,7 +59,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 "Plug 'w0rp/ale' " this is another syntax checker, but it requires vim8 (and
 "is asynchronous!)
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic' " this one is annoying
 " Syntax Highlighting
 Plug 'derekwyatt/vim-scala'
 Plug 'jelera/vim-javascript-syntax'
