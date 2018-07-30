@@ -40,7 +40,7 @@ alias u3="cd ../../.."
 alias u4="cd ../../../.."
 alias hi="history"
 
-alias v="vim"
+alias v="vi"
 alias g="grep -rIi"
 
 alias erc="v ~/.bashrc"
