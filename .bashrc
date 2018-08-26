@@ -124,3 +124,4 @@ alias dj="docker-compose run web python manage.py"
 #--------------------------------------------------------------
 # Navigation
 alias tp="cd ~/Documents/repos/transit/projects"
+alias th="cd ~/Documents/repos/history"
