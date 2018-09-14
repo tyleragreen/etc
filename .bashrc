@@ -47,6 +47,7 @@ alias erc="v ~/.bashrc"
 alias crc="cp ~/.bashrc ."
 alias evrc="v ~/.vimrc"
 alias cvrc="cp ~/.vimrc ."
+alias esh="v ~/.ssh/config"
 alias s="source ~/.bashrc"
 
 #--------------------------------------------------------------
