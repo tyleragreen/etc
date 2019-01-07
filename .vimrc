@@ -18,6 +18,9 @@ set tabstop=2
 set expandtab
 set shiftwidth=2
 
+" Backspace config
+set backspace=indent,eol,start
+
 " Show line numbers
 set nu
 
@@ -34,6 +37,7 @@ set autoindent
 " Aliases
 :command Q q
 :command W w
+:command Wq wq
 :command Sp set paste
 :command Snp set nopaste
 
@@ -52,34 +56,17 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+"Plug 'scrooloose/nerdtree'
+"Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'tpope/vim-fugitive'
+"Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
-"Plug 'w0rp/ale' " this is another syntax checker, but it requires vim8 (and
-"is asynchronous!)
-"Plug 'vim-syntastic/syntastic' " this one is annoying
-" Syntax Highlighting
+"" Syntax Highlighting
 Plug 'derekwyatt/vim-scala'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'elixir-lang/vim-elixir'
 call plug#end()
-
-"------------------------------------------------------------------------------
-" Syntastic customizations
-"------------------------------------------------------------------------------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 
 "------------------------------------------------------------------------------
 " ctrlp customizations
