@@ -12,6 +12,8 @@ set wildmode=longest:full,full
 " Syntax highlighting
 syntax on
 colorscheme desert
+" Use new regular expression engine
+set re=0
 
 " Replace tabs with spaces
 set tabstop=2
@@ -45,10 +47,6 @@ set autoindent
 " This can be turned on with :set list and turned off with :set nolist
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
-" Update time was lowered to help airblade/vim-gutter reload more often
-" https://github.com/airblade/vim-gitgutter#getting-started
-set updatetime=100
-
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -56,22 +54,17 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-"Plug 'scrooloose/nerdtree'
-"Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'tpope/vim-fugitive'
-"Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 "" Syntax Highlighting
 Plug 'derekwyatt/vim-scala'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'elixir-lang/vim-elixir'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+  \ 'coc-tsserver'
+  \ ]
 call plug#end()
-
-"------------------------------------------------------------------------------
-" ctrlp customizations
-"------------------------------------------------------------------------------
-let g:ctrlp_show_hidden = 1
 
 "------------------------------------------------------------------------------
 " airline customizations
