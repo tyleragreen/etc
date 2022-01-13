@@ -14,7 +14,7 @@ parse_git_branch() {
 
 export PS1="\u@\h: \w \$(parse_git_branch) > "
 
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/local/bin/nvim
 
 #==============================================================
 # Input mode
@@ -40,7 +40,7 @@ alias u3="cd ../../.."
 alias u4="cd ../../../.."
 alias hi="history"
 
-alias v="vi"
+alias v="nvim"
 alias g="grep -rIi"
 
 alias erc="v ~/.bashrc"
@@ -115,15 +115,14 @@ alias pj="python -m json.tool"
 
 #--------------------------------------------------------------
 # Docker
+
 alias ds="docker stop"
 alias dps="docker ps"
 alias dcu="docker-compose up"
 alias dc="docker-compose"
 
-alias dj="docker-compose run web python manage.py"
-
 #--------------------------------------------------------------
 # Navigation
-alias tp="cd ~/Documents/repos/transit/projects"
-alias th="cd ~/Documents/repos/history"
+
 alias tr="cd ~/Documents/repos"
+alias tn="cd ~/Documents/notes"
