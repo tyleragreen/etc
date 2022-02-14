@@ -34,6 +34,7 @@ export HISTCONTROL=ignoreboth
 alias ll="ls -la"
 alias llr="ls -lR"
 alias llt="ls -ltr"
+alias llf="ls -ltrd $PWD/*"
 alias u="cd .."
 alias u2="cd ../.."
 alias u3="cd ../../.."
