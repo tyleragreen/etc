@@ -33,9 +33,6 @@ set hlsearch
 set incsearch
 set autoread
 
-" Enable auto-indent
-set autoindent
-
 " Aliases
 :command Q q
 :command W w
@@ -54,18 +51,16 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'neovim/nvim-lspconfig'
-
-"" Syntax Highlighting
 Plug 'udalov/kotlin-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'elixir-lang/vim-elixir'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"" let g:coc_global_extensions = [
-""   \ 'coc-tsserver'
-""   \ ]
+let g:coc_global_extensions = [
+  \ 'coc-tsserver',
+  \ 'coc-rust-analyzer'
+  \ ]
 call plug#end()
 
 nmap <silent> gd <Plug>(coc-definition)
@@ -73,42 +68,3 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-
-"-----------------------------------------------------------------
-" LSP Configuration - TypeScript
-" For new langs, makes sure add the name to the keybinding config
-"----------------------------------------------------------------
-lua << EOF
-require'lspconfig'.tsserver.setup{
-        flags = {
-          debounce_text_changes = 150,
-        }
-    }
-EOF
-
-
-"------------------------------------------------------------------------------
-" Buffers like tabs
-"------------------------------------------------------------------------------
-nmap <leader>T :enew<CR>
-
-nmap <leader>n :bnext<CR>
-nmap <leader>b :bprevious<CR>
-
-nmap <leader>l :ls<CR>
-
-nmap <leader>q :bp <BAR> bd #<cr>
-
-nmap <leader>h <C-W><C-H>
-nmap <leader>l <C-W><C-L>
-
-"------------------------------------------------------------------------------
-" Toggle paste mode
-"------------------------------------------------------------------------------
-nmap <leader>p :set paste<CR>
-nmap <leader>np :set nopaste<CR>
-
-"------------------------------------------------------------------------------
-" Notetime
-"------------------------------------------------------------------------------
-command NTSourceAdd :r ~/new_source_template.txt
