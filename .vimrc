@@ -34,9 +34,9 @@ set incsearch
 set autoread
 
 " Aliases
-:command Q q
+:command Q qall
 :command W w
-:command Wq wq
+:command Wq wqall
 :command Sp set paste
 :command Snp set nopaste
 
