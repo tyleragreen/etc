@@ -4,6 +4,11 @@
 # .bashrc
 #==============================================================
 
+# Start tmux on open
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+
 #==============================================================
 # Prompt
 #==============================================================
@@ -127,3 +132,5 @@ alias dc="docker-compose"
 
 alias tr="cd ~/Documents/repos"
 alias tn="cd ~/Documents/notes"
+
+. "$HOME/.cargo/env"
