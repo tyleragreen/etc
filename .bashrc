@@ -5,9 +5,11 @@
 #==============================================================
 
 # Start tmux on open
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
-fi
+# Keeping this disabled for now because it interferes with some Ctrl
+# actions I use regularly in Vim.
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#  exec tmux
+#fi
 
 #==============================================================
 # Prompt
