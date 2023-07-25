@@ -34,6 +34,7 @@ set incsearch
 set autoread
 
 " Aliases
+:command Ga !git add %
 :command Q qall
 :command W w
 :command Wq wqall
