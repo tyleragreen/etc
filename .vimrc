@@ -12,6 +12,7 @@ set wildmode=longest:full,full
 " Syntax highlighting
 syntax on
 colorscheme desert
+
 " Use new regular expression engine
 set re=0
 
@@ -29,21 +30,11 @@ set nu
 " Highlight search results
 set hlsearch
 
-" Experiment section from https://github.com/tpope/vim-sensible
-set incsearch
-set autoread
-
 " Aliases
 :command Ga !git add %
 :command Q qall
 :command W w
 :command Wq wqall
-:command Sp set paste
-:command Snp set nopaste
-
-" Configure white space characters
-" This can be turned on with :set list and turned off with :set nolist
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -58,6 +49,9 @@ Plug 'vim-airline/vim-airline'
 " Dependency for telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
+
+Plug 'tpope/vim-sensible'
+Plug 'github/copilot.vim'
 
 Plug 'udalov/kotlin-vim'
 Plug 'derekwyatt/vim-scala'
