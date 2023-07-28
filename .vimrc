@@ -61,7 +61,8 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
-  \ 'coc-rust-analyzer'
+  \ 'coc-rust-analyzer',
+  \ 'coc-pyright'
   \ ]
 call plug#end()
 
