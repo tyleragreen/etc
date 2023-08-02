@@ -62,7 +62,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-rust-analyzer',
-  \ 'coc-pyright'
+  \ 'coc-pyright',
+  \ 'coc-kotlin'
   \ ]
 call plug#end()
 
