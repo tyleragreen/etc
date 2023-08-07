@@ -9,10 +9,6 @@ let mapleader = " "
 set wildmenu
 set wildmode=longest:full,full
 
-" Syntax highlighting
-syntax on
-colorscheme desert
-
 " Use new regular expression engine
 set re=0
 
@@ -25,7 +21,8 @@ set shiftwidth=2
 set backspace=indent,eol,start
 
 " Show line numbers
-set nu
+set relativenumber
+set number
 
 " Highlight search results
 set hlsearch
@@ -53,11 +50,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
 Plug 'tpope/vim-sensible'
 Plug 'github/copilot.vim'
 
-Plug 'udalov/kotlin-vim'
-Plug 'derekwyatt/vim-scala'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'vim-erlang/vim-erlang-runtime'
-Plug 'elixir-lang/vim-elixir'
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
@@ -78,3 +71,12 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Syntax highlighting
+colorscheme desert
+
+" Enable Treesitter
+syntax enable
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+autocmd BufWinEnter * normal! zR
