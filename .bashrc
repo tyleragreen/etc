@@ -38,10 +38,10 @@ export HISTCONTROL=ignoreboth
 #--------------------------------------------------------------
 # Bash basics
 
-alias ll="ls -la"
+alias ll="ls -lha"
 alias llr="ls -lR"
-alias llt="ls -ltr"
-alias llf="ls -ltrd $PWD/*"
+alias llt="ls -lhtr"
+alias llf="ls -lhtrd $PWD/*"
 alias u="cd .."
 alias u2="cd ../.."
 alias u3="cd ../../.."
