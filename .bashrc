@@ -5,11 +5,11 @@
 #==============================================================
 
 # Start tmux on open
-# Keeping this disabled for now because it interferes with some Ctrl
-# actions I use regularly in Vim.
-#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#  exec tmux
-#fi
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+
+alias tr="cd ~/Documents/repos"
 
 #==============================================================
 # Prompt
@@ -72,68 +72,6 @@ alias ga="git add"
 alias gp="git push"
 alias gpu="git pull"
 alias gg="git grep -i"
-alias gcam="git commit -am"
 alias gcm="git commit -m"
 alias gc="git checkout"
 alias gcb="git checkout -b"
-
-# These two commands modify the ~/.gitconfig file
-alias gitignore="git config --global core.excludesfile ~/.gitignore"
-# This command is intended to make rebasing work on OS X
-# I COULDNT GET THIS TO WORK, BUT MAYBE ILL START A REBASING MEETUP AND REVISIT THIS IN THE FUTURE
-# A few sources:
-# https://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
-# https://stackoverflow.com/questions/21889741/git-rebase-continue-wont-work
-# https://stackoverflow.com/questions/15136590/what-happened-to-my-these-several-times-git-pull-rebase-with-the-error-your-l
-alias gitdistrustctime="git config --global core.trustctime false"
-
-#--------------------------------------------------------------
-# Node.js
-
-alias nt="npm test"
-alias ns="npm start"
-alias vp="v package.json"
-
-# Load nvm
-export NVM_DIR="/Users/tylergreen/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
-
-#--------------------------------------------------------------
-# Postgres
-# from https://stackoverflow.com/a/18581276
-
-export PGDATA='/usr/local/var/postgres'
-export PGHOST=localhost
-alias start-pg='pg_ctl -l $PGDATA/server.log start'
-alias stop-pg='pg_ctl stop -m fast'
-alias pg-status='pg_ctl status'
-alias restart-pg='pg_ctl reload'
-
-#--------------------------------------------------------------
-# Notetime
-# https://github.com/tyleragreen/notetime
-
-alias nn="note-new"
-alias nd="note-deploy"
-alias no="note-open"
-
-#--------------------------------------------------------------
-# Python
-
-alias pj="python -m json.tool"
-
-#--------------------------------------------------------------
-# Docker
-
-alias ds="docker stop"
-alias dps="docker ps"
-alias dcu="docker-compose up"
-alias dc="docker-compose"
-
-#--------------------------------------------------------------
-# Navigation
-
-alias tr="cd ~/Documents/repos"
-alias tn="cd ~/Documents/notes"
-
-. "$HOME/.cargo/env"
