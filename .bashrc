@@ -50,7 +50,7 @@ alias hi="history"
 
 alias v="nvim"
 alias g="grep -rIi"
-alias fz="find . -type f | fzf | xargs nvim"
+alias fz="fd | fzf | xargs nvim"
 
 alias erc="v ~/.bashrc"
 alias crc="cp ~/.bashrc ."
