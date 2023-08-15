@@ -5,6 +5,7 @@
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Run alias to navigate to main repo/code directory
-tr
+# tr
 
 . "$HOME/.cargo/env"
+eval "$(rbenv init -)"
