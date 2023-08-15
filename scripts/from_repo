@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cp .bashrc ~/
+cp .bash_profile ~/
+cp .vimrc ~/
+cp init.vim ~/.config/nvim/
+cp .tmux.conf ~/
