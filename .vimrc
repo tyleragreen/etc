@@ -75,8 +75,8 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " Syntax highlighting
 colorscheme desert
 
-" Enable Treesitter
-syntax enable
+" Enable Treesitter Folding
+" (the rest of the configuration is in ~/.config/nvim/init.vim)
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 autocmd BufWinEnter * normal! zR
