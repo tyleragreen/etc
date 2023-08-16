@@ -49,6 +49,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
 
 Plug 'tpope/vim-sensible'
 Plug 'github/copilot.vim'
+Plug 'sainnhe/edge'
 
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -73,7 +74,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Syntax highlighting
-colorscheme desert
+colorscheme edge
 
 " Enable Treesitter Folding
 " (the rest of the configuration is in ~/.config/nvim/init.vim)
