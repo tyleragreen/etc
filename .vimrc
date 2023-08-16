@@ -42,6 +42,7 @@ endif
 call plug#begin('~/.vim/plugged')
 " Airline for prettier status bar
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Dependency for telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -81,3 +82,12 @@ colorscheme edge
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 autocmd BufWinEnter * normal! zR
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_theme = 'tomorrow'
+let g:airline#extensions#branch#enabled = 1
