@@ -4,4 +4,5 @@ cp .bashrc ~/
 cp .bash_profile ~/
 cp .vimrc ~/
 cp init.vim ~/.config/nvim/
+cp starship.toml ~/.config/starship.toml
 cp .tmux.conf ~/

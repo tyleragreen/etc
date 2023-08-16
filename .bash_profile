@@ -8,4 +8,10 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # tr
 
 . "$HOME/.cargo/env"
-eval "$(rbenv init -)"
+
+if command -v rbenv >/dev/null 2>&1; then
+    eval "$(rbenv init -)"
+fi
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init bash)"
+fi
