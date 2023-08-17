@@ -49,6 +49,7 @@ alias u4="cd ../../../.."
 alias hi="history"
 
 alias v="nvim"
+alias t="tmux new-session -c ~/Documents/repos/"
 alias g="grep -rIi"
 alias fz="fd | fzf | xargs nvim"
 
