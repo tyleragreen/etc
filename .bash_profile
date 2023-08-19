@@ -16,3 +16,4 @@ if command -v starship >/dev/null 2>&1; then
     eval "$(starship init bash)"
 fi
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
