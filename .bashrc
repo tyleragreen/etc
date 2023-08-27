@@ -52,14 +52,12 @@ alias v="nvim"
 alias g="grep -rIi"
 alias fz="fd | fzf | xargs nvim"
 
-alias t="tmux new-session -c ~/Documents/repos/"
+alias t="tmux new-session -c ~/Documents/repos/ -s"
 alias tl="tmux list-sessions"
 alias ta="tmux attach-session -t"
 
 alias erc="v ~/.bashrc"
-alias crc="cp ~/.bashrc ."
 alias evrc="v ~/.vimrc"
-alias cvrc="cp ~/.vimrc ."
 alias esh="v ~/.ssh/config"
 alias s="source ~/.bashrc"
 
