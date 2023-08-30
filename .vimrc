@@ -51,6 +51,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
 Plug 'tpope/vim-sensible'
 "Plug 'github/copilot.vim'
 Plug 'sainnhe/edge'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -91,3 +92,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme = 'tomorrow'
 let g:airline#extensions#branch#enabled = 1
+
+" Markdown Previouw
+nnoremap <leader>mp <Plug>MarkdownPreviewToggle
