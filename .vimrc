@@ -95,3 +95,14 @@ let g:airline#extensions#branch#enabled = 1
 
 " Markdown Previouw
 nnoremap <leader>mp <Plug>MarkdownPreviewToggle
+
+" Use <leader>x to close any buffer (or vim if it is the last buffer)
+nnoremap <leader>x :call CloseBufferOrVim()<CR>
+function! CloseBufferOrVim()
+    let num_buffers = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+    if num_buffers == 1
+        qall
+    else
+        bdelete
+    endif
+endfunction
