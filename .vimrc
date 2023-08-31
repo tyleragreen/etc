@@ -93,7 +93,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme = 'tomorrow'
 let g:airline#extensions#branch#enabled = 1
 
-" Markdown Previouw
+" Markdown Preview
 nnoremap <leader>mp <Plug>MarkdownPreviewToggle
 
 " Use <leader>x to close any buffer (or vim if it is the last buffer)
