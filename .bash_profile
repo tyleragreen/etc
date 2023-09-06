@@ -4,9 +4,6 @@
 # Hide 'The default interactive shell is now zsh.' message on MacOS.
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-# Run alias to navigate to main repo/code directory
-# tr
-
 . "$HOME/.cargo/env"
 
 if command -v rbenv >/dev/null 2>&1; then
