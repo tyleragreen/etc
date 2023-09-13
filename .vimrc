@@ -69,6 +69,11 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
+" Switch buffers quickly. This is useful for when you only have a few
+" open. Otherwise, using the Telescope mappings below are easier.
+nnoremap <leader>n <cmd>bn<cr>
+nnoremap <leader>p <cmd>bp<cr>
+
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
