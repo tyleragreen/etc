@@ -1,8 +1,41 @@
-" Tyler Green
-" .vimrc
+"------------------------------------------------------------------------------
+" VIM-PLUG - keep this at the top
+"------------------------------------------------------------------------------
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+" Airline for prettier status bar
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Dependency for telescope
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
+
+Plug 'tpope/vim-sensible'
+Plug 'sainnhe/edge'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+Plug 'folke/noice.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'rcarriga/nvim-notify'
+
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+  \ 'coc-tsserver',
+  \ 'coc-rust-analyzer',
+  \ 'coc-pyright',
+  \ 'coc-kotlin'
+  \ ]
+call plug#end()
 
 "------------------------------------------------------------------------------
-" SET LEADER
+" BASICS
 "------------------------------------------------------------------------------
 let mapleader = " "
 
@@ -27,42 +60,19 @@ set number
 " Highlight search results
 set hlsearch
 
-" Aliases
-:command Ga !git add %
+" Syntax highlighting - from the plugin "sainnhe/edge"
+colorscheme edge
+
+"------------------------------------------------------------------------------
+" ALIASES
+"------------------------------------------------------------------------------
 :command Q qall
 :command W w
 :command Wq wqall
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-call plug#begin('~/.vim/plugged')
-" Airline for prettier status bar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" Dependency for telescope
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
-
-Plug 'tpope/vim-sensible'
-"Plug 'github/copilot.vim'
-Plug 'sainnhe/edge'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = [
-  \ 'coc-tsserver',
-  \ 'coc-rust-analyzer',
-  \ 'coc-pyright',
-  \ 'coc-kotlin'
-  \ ]
-call plug#end()
-
+"------------------------------------------------------------------------------
+" KEY REMAPS
+"------------------------------------------------------------------------------
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -80,9 +90,12 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" Syntax highlighting
-colorscheme edge
+" Use <leader>x to close any buffer (or vim if it is the last buffer)
+nnoremap <leader>x :call CloseBufferOrVim()<CR>
 
+"------------------------------------------------------------------------------
+" PLUGIN CONFIG - More in init.nvim
+"------------------------------------------------------------------------------
 " Enable Treesitter Folding
 " (the rest of the configuration is in ~/.config/nvim/init.vim)
 set foldmethod=expr
@@ -101,8 +114,9 @@ let g:airline#extensions#branch#enabled = 1
 " Markdown Preview
 nnoremap <leader>mp <Plug>MarkdownPreviewToggle
 
-" Use <leader>x to close any buffer (or vim if it is the last buffer)
-nnoremap <leader>x :call CloseBufferOrVim()<CR>
+"------------------------------------------------------------------------------
+" FUNCTIONS
+"------------------------------------------------------------------------------
 function! CloseBufferOrVim()
     let num_buffers = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
     if num_buffers == 1
