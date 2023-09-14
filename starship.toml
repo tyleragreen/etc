@@ -2,6 +2,8 @@ format = """
 $directory\
 [ ](fg:#87af5f bg:#394260)\
 $git_branch\
+$rust\
+$python\
 [ ](fg:#394260)\
 """
 
@@ -16,4 +18,14 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = ""
 style = "bg:#394260"
-format = '[[ $symbol $branch ](fg:#87af5f bg:#394260)]($style)'
+format = '[[ $symbol  $branch ](fg:#87af5f bg:#394260)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol  ($version) ](fg:#87af5f bg:#394260)]($style)'
+
+[python]
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol  ($version) ${virtualenv} ](fg:#87af5f bg:#394260)]($style)'
