@@ -4,6 +4,11 @@ $directory\
 $git_branch\
 $rust\
 $python\
+$nodejs\
+$java\
+$gradle\
+$ruby\
+$c\
 [ ](fg:#394260)\
 """
 
@@ -29,3 +34,28 @@ format = '[[ $symbol  ($version) ](fg:#87af5f bg:#394260)]($style)'
 symbol = ""
 style = "bg:#394260"
 format = '[[ $symbol  ($version) ${virtualenv} ](fg:#87af5f bg:#394260)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol  ($version) ](fg:#87af5f bg:#394260)]($style)'
+
+[java]
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol  ($version) ](fg:#87af5f bg:#394260)]($style)'
+
+[gradle]
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol  ($version) ](fg:#87af5f bg:#394260)]($style)'
+
+[ruby]
+symbol = "󰴭"
+style = "bg:#394260"
+format = '[[ $symbol  ($version) ](fg:#87af5f bg:#394260)]($style)'
+
+[c]
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol  ($version) ](fg:#87af5f bg:#394260)]($style)'
