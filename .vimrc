@@ -39,6 +39,8 @@ call plug#end()
 "------------------------------------------------------------------------------
 let mapleader = " "
 
+set termguicolors
+
 set wildmenu
 set wildmode=longest:full,full
 
