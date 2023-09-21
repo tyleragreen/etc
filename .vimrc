@@ -24,6 +24,8 @@ Plug 'folke/noice.nvim'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'rcarriga/nvim-notify'
 
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
@@ -75,6 +77,7 @@ colorscheme edge
 "------------------------------------------------------------------------------
 " KEY REMAPS
 "------------------------------------------------------------------------------
+" LSP from COC
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -95,6 +98,12 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " Use <leader>x to close any buffer (or vim if it is the last buffer)
 nnoremap <leader>x :call CloseBufferOrVim()<CR>
 
+" Open file explorer from CHADtree
+nnoremap <leader>v <cmd>CHADopen<cr>
+
+" Markdown Preview
+nnoremap <leader>mp <Plug>MarkdownPreviewToggle
+
 "------------------------------------------------------------------------------
 " PLUGIN CONFIG - More in init.nvim
 "------------------------------------------------------------------------------
@@ -112,9 +121,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme = 'tomorrow'
 let g:airline#extensions#branch#enabled = 1
-
-" Markdown Preview
-nnoremap <leader>mp <Plug>MarkdownPreviewToggle
 
 "------------------------------------------------------------------------------
 " FUNCTIONS
