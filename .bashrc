@@ -1,17 +1,4 @@
 #==============================================================
-# Tyler Green
-#
-# .bashrc
-#==============================================================
-
-# Start tmux on open
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#   exec tmux
-# fi
-
-alias tr="cd ~/Documents/repos"
-
-#==============================================================
 # Prompt
 #==============================================================
 
@@ -47,6 +34,7 @@ alias u2="cd ../.."
 alias u3="cd ../../.."
 alias u4="cd ../../../.."
 alias hi="history"
+alias tr="cd ~/Documents/repos"
 
 alias v="nvim"
 alias g="grep -rIi"
