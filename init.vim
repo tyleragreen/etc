@@ -2,8 +2,31 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 
-" Load the nvim-treesitter plugin
 lua << EOF
+-- I had to run this command to install rust-analyzer to my current toolchain,
+-- which is nightly-aarch64-apple-darwin.
+--
+-- rustup component add rust-analyzer
+--
+-- To confirm it is installed, run this:
+--
+-- rustup component list
+--
+require'lspconfig'.rust_analyzer.setup({})
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', '<leader>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
+})
+
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,  -- Enable syntax highlighting
