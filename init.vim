@@ -87,29 +87,29 @@ require("noice").setup({
 
 -- NOTE: This python virtual must have debugpy installed
 require('dap-python').setup('~/.env/python/bin/python')
-require("dapui").setup()
+local dap, dapui = require("dap"), require("dapui")
+dapui.setup()
 vim.keymap.set('n', '<leader>dc', function()
-    require("dap").continue()
+    dap.continue()
 end, opts)
 vim.keymap.set('n', '<leader>db', function()
-    require("dap").toggle_breakpoint()
+    dap.toggle_breakpoint()
 end, opts)
 vim.keymap.set('n', '<leader>dt', function()
-    require("dap").terminate()
+    dap.terminate()
 end, opts)
 vim.keymap.set('n', '<leader>ds', function()
-    require("dap").step_over()
+    dap.step_over()
 end, opts)
 vim.keymap.set('n', '<leader>di', function()
-    require("dap").step_into()
+    dap.step_into()
 end, opts)
 vim.keymap.set('n', '<leader>dr', function()
-    require("dap").repl.open()
+    dap.repl.open()
 end, opts)
 vim.keymap.set('n', '<leader>do', function()
-    require("dapui").toggle()
+    dapui.toggle()
 end, opts)
-local dap, dapui = require("dap"), require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
@@ -119,4 +119,23 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
+
+local file = "~/Documents/repos/kotlin-debug-adapter/adapter/build/install/adapter/bin/kotlin-debug-adapter"
+dap.configurations.kotlin = {
+  {
+      type = 'kotlin';
+      request = 'launch';
+      mainClass = '{}Kt';
+      projectRoot = "${workspaceFolder}";
+      name = "Launch file";
+  },
+}
+dap.adapters.kotlin = {
+  type = 'executable';
+  command = file;
+  options = {
+    source_filetype = 'kotlin',
+  }
+}
+dap.set_log_level("DEBUG")
 EOF
