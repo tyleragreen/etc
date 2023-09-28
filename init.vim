@@ -83,4 +83,29 @@ require("noice").setup({
     lsp_doc_border = false, -- add a border to hover docs and signature help
   },
 })
+
+
+require('dap-python').setup('~/.env/python/bin/python')
+require("dapui").setup()
+vim.keymap.set('n', '<leader>dc', function()
+    require("dap").continue()
+end, opts)
+vim.keymap.set('n', '<leader>db', function()
+    require("dap").toggle_breakpoint()
+end, opts)
+vim.keymap.set('n', '<leader>dt', function()
+    require("dap").terminate()
+end, opts)
+vim.keymap.set('n', '<leader>ds', function()
+    require("dap").step_over()
+end, opts)
+vim.keymap.set('n', '<leader>di', function()
+    require("dap").step_into()
+end, opts)
+vim.keymap.set('n', '<leader>dr', function()
+    require("dap").repl.open()
+end, opts)
+vim.keymap.set('n', '<leader>do', function()
+    require("dapui").toggle()
+end, opts)
 EOF
