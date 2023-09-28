@@ -128,6 +128,9 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme = 'tomorrow'
 let g:airline#extensions#branch#enabled = 1
 
+nnoremap <leader>nf :NERDTreeFocus<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
+
 "------------------------------------------------------------------------------
 " FUNCTIONS
 "------------------------------------------------------------------------------
