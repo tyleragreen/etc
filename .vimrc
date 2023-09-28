@@ -24,6 +24,8 @@ Plug 'folke/noice.nvim'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'rcarriga/nvim-notify'
 
+Plug 'preservim/nerdtree'
+
 Plug 'neovim/nvim-lspconfig'
 Plug 'dpayne/CodeGPT.nvim'
 
@@ -104,9 +106,6 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Use <leader>x to close any buffer (or vim if it is the last buffer)
 nnoremap <leader>x :call CloseBufferOrVim()<CR>
-
-" Open file explorer from CHADtree
-nnoremap <leader>v <cmd>CHADopen<cr>
 
 " Markdown Preview
 nnoremap <leader>mp <Plug>MarkdownPreviewToggle

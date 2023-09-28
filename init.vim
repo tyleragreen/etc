@@ -85,6 +85,7 @@ require("noice").setup({
 })
 
 
+-- NOTE: This python virtual must have debugpy installed
 require('dap-python').setup('~/.env/python/bin/python')
 require("dapui").setup()
 vim.keymap.set('n', '<leader>dc', function()
