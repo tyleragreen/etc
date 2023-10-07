@@ -25,6 +25,7 @@ Plug 'MunifTanjim/nui.nvim'
 Plug 'rcarriga/nvim-notify'
 
 Plug 'preservim/nerdtree'
+Plug 'folke/which-key.nvim'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'dpayne/CodeGPT.nvim'
