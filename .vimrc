@@ -8,9 +8,10 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-" Airline for prettier status bar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
+" If you want to have icons in your statusline choose one of these
+Plug 'nvim-tree/nvim-web-devicons'
 
 " Dependency for telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -119,15 +120,6 @@ nnoremap <leader>mp <Plug>MarkdownPreviewToggle
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 autocmd BufWinEnter * normal! zR
-
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_theme = 'tomorrow'
-let g:airline#extensions#branch#enabled = 1
 
 nnoremap <leader>mf :NERDTreeFocus<CR>
 nnoremap <leader>mt :NERDTreeToggle<CR>

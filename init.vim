@@ -85,6 +85,22 @@ require("noice").setup({
 })
 
 
+require('lualine').setup {
+  options = {
+    theme = 'everforest',
+    tabline = {
+      lualine_a = {'buffers'},
+      lualine_b = {'branch'},
+      lualine_c = {'filename'},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {'tabs'}
+    }
+  }
+}
+
+require("bufferline").setup{}
+
 -- NOTE: This python virtual must have debugpy installed
 require('dap-python').setup('~/.env/python/bin/python')
 local dap, dapui = require("dap"), require("dapui")
