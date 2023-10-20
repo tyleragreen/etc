@@ -3,6 +3,12 @@ let &packpath = &runtimepath
 source ~/.vimrc
 
 lua << EOF
+
+require("mason").setup()
+require("mason-lspconfig").setup {
+    ensure_installed = { "lua_ls", "rust_analyzer" },
+}
+
 -- I had to run this command to install rust-analyzer to my current toolchain,
 -- which is nightly-aarch64-apple-darwin.
 --
