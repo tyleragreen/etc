@@ -12,22 +12,25 @@ lua << EOF
 --
 -- rustup component list
 --
--- KEEPING THIS DISABLED AS OF 2023-09-24 BECAUSE IT IS SLOWER THAN USING
--- coc-rust-analyzer.
--- require'lspconfig'.rust_analyzer.setup({})
--- vim.api.nvim_create_autocmd('LspAttach', {
---   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
---   callback = function(ev)
---     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
---     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
---     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
---     vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, opts)
---     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
---     vim.keymap.set('n', '<leader>f', function()
---       vim.lsp.buf.format { async = true }
---     end, opts)
---   end,
--- })
+require'lspconfig'.rust_analyzer.setup({})
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', '<leader>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+  end,
+})
 
 require'nvim-treesitter.configs'.setup {
   highlight = {

@@ -39,7 +39,6 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
-  \ 'coc-rust-analyzer',
   \ 'coc-lua',
   \ 'coc-pyright',
   \ 'coc-kotlin'
