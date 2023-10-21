@@ -3,21 +3,21 @@ let &packpath = &runtimepath
 source ~/.vimrc
 
 lua << EOF
-
+-- These must be setup in this order:
+-- 1. mason
+-- 2. mason-lspconfig
+-- 3. lspconfig
 require("mason").setup()
 require("mason-lspconfig").setup {
-    ensure_installed = { "lua_ls", "rust_analyzer" },
+    -- This prevents us from needing to run: rustup component add rust-analyzer
+    -- To confirm it is installed, run: rustup component list
+    ensure_installed = {
+      "lua_ls",
+      "rust_analyzer",
+      "pyright",
+    },
 }
 
--- I had to run this command to install rust-analyzer to my current toolchain,
--- which is nightly-aarch64-apple-darwin.
---
--- rustup component add rust-analyzer
---
--- To confirm it is installed, run this:
---
--- rustup component list
---
 require'lspconfig'.rust_analyzer.setup({})
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -102,7 +102,7 @@ require('lualine').setup {
 
 require("bufferline").setup{}
 
--- NOTE: This python virtual must have debugpy installed
+-- NOTE: This python virtualenv must have debugpy installed
 require('dap-python').setup('~/.env/python/bin/python')
 local dap, dapui = require("dap"), require("dapui")
 dapui.setup()

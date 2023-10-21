@@ -39,12 +39,6 @@ Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = [
-  \ 'coc-tsserver',
-  \ 'coc-pyright',
-  \ 'coc-kotlin'
-  \ ]
 call plug#end()
 
 "------------------------------------------------------------------------------
@@ -88,13 +82,7 @@ colorscheme edge
 "------------------------------------------------------------------------------
 " KEY REMAPS
 "------------------------------------------------------------------------------
-" LSP from COC
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <leader>a  <Plug>(coc-codeaction-cursor)
-inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+nnoremap <leader>w :echo expand('%:p')<CR>
 
 " Switch buffers quickly. This is useful for when you only have a few
 " open. Otherwise, using the Telescope mappings below are easier.
