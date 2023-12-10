@@ -116,6 +116,8 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Use <leader>x to close any buffer (or vim if it is the last buffer)
 nnoremap <leader>x :call CloseBufferOrVim()<CR>
+nnoremap <leader>n :call TurnOffLineNumbers()<CR>
+nnoremap <leader>m :call TurnOnLineNumbers()<CR>
 
 " Markdown Preview
 nnoremap <leader>mp <Plug>MarkdownPreviewToggle
@@ -142,4 +144,14 @@ function! CloseBufferOrVim()
     else
         bdelete
     endif
+endfunction
+
+function! TurnOffLineNumbers()
+    set nonu
+    set norelativenumber
+endfunction
+
+function! TurnOnLineNumbers()
+    set nu
+    set relativenumber
 endfunction
