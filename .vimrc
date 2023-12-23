@@ -15,21 +15,36 @@ Plug 'nvim-tree/nvim-web-devicons'
 
 " Dependency for telescope
 Plug 'nvim-lua/plenary.nvim'
+
+" A slick popup window for switching between files and buffers
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
 
-Plug 'tpope/vim-sensible'
+" My current color scheme
 Plug 'sainnhe/edge'
+
+" This allows you to render markdown in realtime in a browser
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 Plug 'folke/noice.nvim'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'rcarriga/nvim-notify'
 
+" Nerdtree is one of the main file browsers for vim. I don't use this very
+" often (I prefer absolute paths or telescope), but I thought it wouldn't hurt
+" to be familiar with.
 Plug 'preservim/nerdtree'
-Plug 'folke/which-key.nvim'
 
+" neovim's builtin LSP. Yes, I find it confusing that you have to install
+" something to get the builtin LSP also. I previously used COC and liked it.
 Plug 'neovim/nvim-lspconfig'
-Plug 'dpayne/CodeGPT.nvim'
+" nvim-cmp provides autocompletion and...
+Plug 'hrsh7th/nvim-cmp'
+" connects to the LSP using cmp-nvim-lsp
+Plug 'hrsh7th/cmp-nvim-lsp'
+" These next two are needed for when an autocompletion item actually selected.
+" This is called a "snippet" that is actually inserted into your buffer.
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/cmp-vsnip'
 
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
@@ -90,12 +105,12 @@ colorscheme edge
 " KEY REMAPS
 "------------------------------------------------------------------------------
 "" LSP from COC
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <leader>a  <Plug>(coc-codeaction-cursor)
-inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+" nmap <leader>a  <Plug>(coc-codeaction-cursor)
+" inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 " Display the full file path of the current buffer
 nnoremap <leader>w :echo expand('%:p')<CR>

@@ -18,8 +18,37 @@ require("mason-lspconfig").setup {
     },
 }
 
-require'lspconfig'.pyright.setup{}
+-- Enable the autocompletion library, which we will later connect to the LSP.
+local cmp = require'cmp'
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' },
+  })
+})
+
+-- The connection between cmp and the LSP. When then pass this into each LSP such as rust-analyzer
+-- and pyright below.
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+require'lspconfig'.pyright.setup {
+  capabilities = capabilities,
+}
 require'lspconfig'.rust_analyzer.setup {
+  capabilities = capabilities,
   settings = {
     ["rust-analyzer"] = {
       cargo = {
@@ -29,6 +58,7 @@ require'lspconfig'.rust_analyzer.setup {
   }
 }
 
+-- These are the main LSP keymappings.
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
@@ -48,8 +78,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- Autocommand to show diagnostics on hover
-vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {
+-- Autocommand to show diagnostics on hover. To support hover even while in insert mode,
+-- you can add CursorHoldI. I found this annoying so I disabled it.
+vim.api.nvim_create_autocmd({"CursorHold"}, {
   pattern = "*",
   callback = function()
     local opts = {
