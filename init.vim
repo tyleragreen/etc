@@ -14,10 +14,21 @@ require("mason-lspconfig").setup {
     ensure_installed = {
       "lua_ls",
       "rust_analyzer",
+      "pyright",
     },
 }
 
-require'lspconfig'.rust_analyzer.setup({})
+require'lspconfig'.pyright.setup{}
+require'lspconfig'.rust_analyzer.setup {
+  settings = {
+    ["rust-analyzer"] = {
+      cargo = {
+        features = {"c_stdlib"}
+      }
+    }
+  }
+}
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
@@ -36,6 +47,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
   end,
 })
+
+-- Autocommand to show diagnostics on hover
+vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {
+  pattern = "*",
+  callback = function()
+    local opts = {
+      focusable = false,
+      close_events = {"BufLeave", "CursorMoved", "InsertEnter", "FocusLost"},
+      border = 'none',
+      source = false,
+      prefix = ' '
+    }
+    vim.diagnostic.open_float(nil, opts)
+  end
+})
+
+-- You can adjust the delay for CursorHold event
+vim.o.updatetime = 200  -- Time in milliseconds
 
 require'nvim-treesitter.configs'.setup {
   highlight = {

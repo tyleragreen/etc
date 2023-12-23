@@ -39,16 +39,13 @@ Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter'
-" Keeping coc.nvim for now because:
-" 1) I haven't gotten pyright to work with nvim-lsp
-" 2) I haven't gotten the hover errors to display with
-"    nvim-lsp and rust-analyzer. (I can't read them at the end of the line!)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = [
-  \ 'coc-tsserver',
-  \ 'coc-pyright',
-  \ 'coc-kotlin'
-  \ ]
+" I'm using Neovim's builtin lspconfig in my init.vim file for Rust, Lua, and
+" Python. Keeping this here for now in case I need it.
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" let g:coc_global_extensions = [
+"   \ 'coc-tsserver',
+"   \ 'coc-kotlin'
+"   \ ]
 call plug#end()
 
 "------------------------------------------------------------------------------
