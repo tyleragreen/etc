@@ -138,7 +138,7 @@ nnoremap <leader>mp <Plug>MarkdownPreviewToggle
 "------------------------------------------------------------------------------
 " Enable Treesitter Folding
 " (the rest of the configuration is in ~/.config/nvim/init.vim)
-set foldmethod=expr
+set foldmethod=manual
 set foldexpr=nvim_treesitter#foldexpr()
 autocmd BufWinEnter * normal! zR
 
