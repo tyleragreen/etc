@@ -3,6 +3,8 @@ let &packpath = &runtimepath
 source ~/.vimrc
 
 lua << EOF
+vim.opt.colorcolumn = "100"
+
 -- These must be setup in this order:
 -- 1. mason
 -- 2. mason-lspconfig
@@ -15,6 +17,7 @@ require("mason-lspconfig").setup {
       "lua_ls",
       "rust_analyzer",
       "pyright",
+      "clangd",
     },
 }
 
@@ -56,6 +59,10 @@ require'lspconfig'.rust_analyzer.setup {
       }
     }
   }
+}
+require'lspconfig'.clangd.setup {
+  capabilities = capabilities,
+  cmd = { "clangd", "--background-index", "--suggest-missing-includes" },
 }
 
 -- These are the main LSP keymappings.
