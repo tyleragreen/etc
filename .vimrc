@@ -17,7 +17,7 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-lua/plenary.nvim'
 
 " A slick popup window for switching between files and buffers
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
+Plug 'nvim-telescope/telescope.nvim'
 
 " My current color scheme
 Plug 'sainnhe/edge'
