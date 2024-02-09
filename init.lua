@@ -6,18 +6,18 @@ vim.opt.colorcolumn = "100"
 -- 3. lspconfig
 require("mason").setup()
 require("mason-lspconfig").setup {
-    -- This prevents us from needing to run: rustup component add rust-analyzer
-    -- To confirm it is installed, run: rustup component list
-    ensure_installed = {
-      "lua_ls",
-      "rust_analyzer",
-      "pyright",
-      "clangd",
-    },
+  -- This prevents us from needing to run: rustup component add rust-analyzer
+  -- To confirm it is installed, run: rustup component list
+  ensure_installed = {
+    "lua_ls",
+    "rust_analyzer",
+    "pyright",
+    "clangd",
+  },
 }
 
 -- Enable the autocompletion library, which we will later connect to the LSP.
-local cmp = require'cmp'
+local cmp = require 'cmp'
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -42,20 +42,21 @@ cmp.setup({
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-require'lspconfig'.pyright.setup {
+require 'lspconfig'.pyright.setup {
   capabilities = capabilities,
 }
-require'lspconfig'.rust_analyzer.setup {
+require 'lspconfig'.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {
     ["rust-analyzer"] = {
       cargo = {
-        features = {"c_stdlib"}
+        features = { "c_stdlib" }
       }
     }
   }
 }
-require'lspconfig'.clangd.setup {}
+require 'lspconfig'.clangd.setup {}
+require 'lspconfig'.lua_ls.setup {}
 
 -- These are the main LSP keymappings.
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -79,12 +80,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- Autocommand to show diagnostics on hover. To support hover even while in insert mode,
 -- you can add CursorHoldI. I found this annoying so I disabled it.
-vim.api.nvim_create_autocmd({"CursorHold"}, {
+vim.api.nvim_create_autocmd({ "CursorHold" }, {
   pattern = "*",
   callback = function()
     local opts = {
       focusable = false,
-      close_events = {"BufLeave", "CursorMoved", "InsertEnter", "FocusLost"},
+      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
       border = 'none',
       source = false,
       prefix = ' '
@@ -94,17 +95,17 @@ vim.api.nvim_create_autocmd({"CursorHold"}, {
 })
 
 -- You can adjust the delay for CursorHold event
-vim.o.updatetime = 200  -- Time in milliseconds
+vim.o.updatetime = 200 -- Time in milliseconds
 
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   highlight = {
-    enable = true,  -- Enable syntax highlighting
+    enable = true, -- Enable syntax highlighting
   },
   indent = {
-    enable = true,  -- Enable indenting
+    enable = true, -- Enable indenting
   },
   incremental_selection = {
-    enable = true,  -- Enable incremental selection
+    enable = true, -- Enable incremental selection
   },
   ensure_installed = {
     "bash",
@@ -143,11 +144,11 @@ require("noice").setup({
   },
   -- you can enable a preset for easier configuration
   presets = {
-    bottom_search = true, -- use a classic bottom cmdline for search
-    command_palette = true, -- position the cmdline and popupmenu together
+    bottom_search = true,         -- use a classic bottom cmdline for search
+    command_palette = true,       -- position the cmdline and popupmenu together
     long_message_to_split = true, -- long messages will be sent to a split
-    inc_rename = false, -- enables an input dialog for inc-rename.nvim
-    lsp_doc_border = false, -- add a border to hover docs and signature help
+    inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+    lsp_doc_border = false,       -- add a border to hover docs and signature help
   },
 })
 
@@ -158,32 +159,32 @@ require('lualine').setup {
   }
 }
 
-require("bufferline").setup{}
+require("bufferline").setup {}
 
 -- NOTE: This python virtualenv must have debugpy installed
 require('dap-python').setup('~/.env/python/bin/python')
 local dap, dapui = require("dap"), require("dapui")
 dapui.setup()
 vim.keymap.set('n', '<leader>dc', function()
-    dap.continue()
+  dap.continue()
 end, opts)
 vim.keymap.set('n', '<leader>db', function()
-    dap.toggle_breakpoint()
+  dap.toggle_breakpoint()
 end, opts)
 vim.keymap.set('n', '<leader>dt', function()
-    dap.terminate()
+  dap.terminate()
 end, opts)
 vim.keymap.set('n', '<leader>ds', function()
-    dap.step_over()
+  dap.step_over()
 end, opts)
 vim.keymap.set('n', '<leader>di', function()
-    dap.step_into()
+  dap.step_into()
 end, opts)
 vim.keymap.set('n', '<leader>dr', function()
-    dap.repl.open()
+  dap.repl.open()
 end, opts)
 vim.keymap.set('n', '<leader>do', function()
-    dapui.toggle()
+  dapui.toggle()
 end, opts)
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
@@ -198,16 +199,16 @@ end
 local file = "~/Documents/repos/kotlin-debug-adapter/adapter/build/install/adapter/bin/kotlin-debug-adapter"
 dap.configurations.kotlin = {
   {
-      type = 'kotlin';
-      request = 'launch';
-      mainClass = '{}Kt';
-      projectRoot = "${workspaceFolder}";
-      name = "Launch file";
+    type = 'kotlin',
+    request = 'launch',
+    mainClass = '{}Kt',
+    projectRoot = "${workspaceFolder}",
+    name = "Launch file",
   },
 }
 dap.adapters.kotlin = {
-  type = 'executable';
-  command = file;
+  type = 'executable',
+  command = file,
   options = {
     source_filetype = 'kotlin',
   }
