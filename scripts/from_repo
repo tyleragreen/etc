@@ -4,5 +4,7 @@ cp .bashrc ~/
 cp .bash_profile ~/
 cp .vimrc ~/
 cp init.vim ~/.config/nvim/
+mkdir -p ~/.config/nvim/lua
+cp init.lua ~/.config/nvim/lua
 cp starship.toml ~/.config/starship.toml
 cp .tmux.conf ~/

@@ -99,8 +99,9 @@ colorscheme edge
 "------------------------------------------------------------------------------
 " This sets the current working directory to the path of the current buffer
 " each time we enter a buffer. This is useful to change the lens of searches
-" for tools like telescope.
-autocmd BufEnter * silent! lcd %:p:h
+" for tools like telescope, but can also pose problems if you are nested in
+" too deeply.
+"autocmd BufEnter * silent! lcd %:p:h
 
 " Display the full file path of the current buffer
 nnoremap <leader>w :echo expand('%:p')<CR>
