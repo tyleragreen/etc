@@ -60,10 +60,7 @@ require'lspconfig'.rust_analyzer.setup {
     }
   }
 }
-require'lspconfig'.clangd.setup {
-  capabilities = capabilities,
-  cmd = { "clangd", "--background-index", "--suggest-missing-includes" },
-}
+require'lspconfig'.clangd.setup {}
 
 -- These are the main LSP keymappings.
 vim.api.nvim_create_autocmd('LspAttach', {

@@ -54,13 +54,6 @@ Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter'
-" I'm using Neovim's builtin lspconfig in my init.vim file for Rust, Lua, and
-" Python. Keeping this here for now in case I need it.
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" let g:coc_global_extensions = [
-"   \ 'coc-tsserver',
-"   \ 'coc-kotlin'
-"   \ ]
 call plug#end()
 
 "------------------------------------------------------------------------------
@@ -104,16 +97,15 @@ colorscheme edge
 "------------------------------------------------------------------------------
 " KEY REMAPS
 "------------------------------------------------------------------------------
-"" LSP from COC
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
-" nmap <leader>a  <Plug>(coc-codeaction-cursor)
-" inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+" This sets the current working directory to the path of the current buffer
+" each time we enter a buffer. This is useful to change the lens of searches
+" for tools like telescope.
+autocmd BufEnter * silent! lcd %:p:h
 
 " Display the full file path of the current buffer
 nnoremap <leader>w :echo expand('%:p')<CR>
+" Copy the filepath to the system clipboard
+nnoremap <leader>wc :let @+=expand('%:p')<CR>
 
 " Switch buffers quickly. This is useful for when you only have a few
 " open. Otherwise, using the Telescope mappings below are easier.
