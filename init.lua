@@ -4,7 +4,7 @@ vim.opt.colorcolumn = "100"
 -- 1. mason
 -- 2. mason-lspconfig
 -- 3. lspconfig
-require("mason").setup()
+require("mason").setup {}
 require("mason-lspconfig").setup {
   -- This prevents us from needing to run: rustup component add rust-analyzer
   -- To confirm it is installed, run: rustup component list
