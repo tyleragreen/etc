@@ -2,9 +2,8 @@
 
 cp .bashrc ~/
 cp .bash_profile ~/
-cp .vimrc ~/
-cp init.vim ~/.config/nvim/
+# For some reason, neodev.nvim requires this directory to be present to load the vim symbols into the LSP. I don't understand why!
 mkdir -p ~/.config/nvim/lua
-cp init.lua ~/.config/nvim/lua
+cp init.lua ~/.config/nvim/
 cp starship.toml ~/.config/starship.toml
 cp .tmux.conf ~/

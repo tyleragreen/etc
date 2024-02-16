@@ -45,7 +45,7 @@ alias tl="tmux list-sessions"
 alias ta="tmux attach-session -t"
 
 alias erc="v ~/.bashrc"
-alias evrc="v ~/.vimrc ~/.config/nvim/lua/init.lua"
+alias evrc="v ~/.config/nvim/init.lua"
 alias esh="v ~/.ssh/config"
 alias s="source ~/.bashrc"
 

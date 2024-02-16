@@ -2,8 +2,7 @@
 
 cp ~/.bashrc .
 cp ~/.bash_profile .
-cp ~/.vimrc .
-cp ~/.config/nvim/init.vim .
-cp ~/.config/nvim/lua/init.lua .
+cp ~/.config/nvim/init.lua .
+cp ~/.config/nvim/lazy-lock.json .
 cp ~/.config/starship.toml .
 cp ~/.tmux.conf .

@@ -1,11 +1,107 @@
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Mapleader must be set before lazy is loaded or else some mappings will be incorrect
+vim.g.mapleader = " "
+vim.opt.termguicolors = true
+vim.opt.wildmenu = true
+vim.opt.wildmode = 'longest:full,full'
+vim.opt.re = 0
+vim.opt.tabstop = 2
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.backspace = {'indent', 'eol', 'start'}
+vim.opt.relativenumber = true
+vim.opt.number = true
+vim.opt.hlsearch = true
 vim.opt.colorcolumn = "100"
 
-require("auto-save").setup {
-  execution_message = {
-    message = function() -- message to print on save
-      return ("Saved at " .. vim.fn.strftime("%H:%M:%S"))
-    end,
-  }
+-- Aliases
+vim.cmd('command Q qall')
+vim.cmd('command W w')
+vim.cmd('command Wq wqall')
+
+-- Key remaps
+vim.api.nvim_set_keymap('n', '<leader>w', ':echo expand("%:p")<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>wc', ':let @+=expand("%:p")<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>bn<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>bp<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>x', ':lua CloseBufferOrVim()<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>m', ':lua ToggleLineNumbers()<CR>', {noremap = true})
+-- Markdown Preview and NERDTree mappings would need to be adjusted for Lua; refer to plugin docs for Lua setup.
+
+-- Functions
+CloseBufferOrVim = function()
+  local num_buffers = vim.fn.len(vim.fn.filter(vim.fn.range(1, vim.fn.bufnr('$')), 'buflisted(v:val)'))
+  if num_buffers == 1 then
+    vim.cmd('qall')
+  else
+    vim.cmd('bdelete')
+  end
+end
+
+ToggleLineNumbers = function()
+  if vim.wo.number then
+    vim.wo.number = false
+    vim.wo.relativenumber = false
+  else
+    vim.wo.number = true
+    vim.wo.relativenumber = true
+  end
+end
+
+
+local plugins = {
+  "folke/neodev.nvim",
+  "Pocco81/auto-save.nvim",
+  'nvim-lualine/lualine.nvim',
+  'akinsho/bufferline.nvim',
+  'nvim-tree/nvim-web-devicons',
+  'nvim-lua/plenary.nvim',
+  'nvim-telescope/telescope.nvim',
+  'sainnhe/edge',
+  'iamcco/markdown-preview.nvim',
+  'folke/noice.nvim',
+  'MunifTanjim/nui.nvim',
+  'rcarriga/nvim-notify',
+  'preservim/nerdtree',
+  'neovim/nvim-lspconfig',
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/vim-vsnip',
+  'hrsh7th/cmp-vsnip',
+  'mfussenegger/nvim-dap',
+  'rcarriga/nvim-dap-ui',
+  'mfussenegger/nvim-dap-python',
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim',
+  'numToStr/Comment.nvim',
+  'nvim-treesitter/nvim-treesitter',
+}
+
+
+require("lazy").setup(plugins)
+
+-- This references a plugin, so it must come after we call setup on lazy.
+vim.cmd('colorscheme edge')
+
+-- This must come before lspconfig
+require("neodev").setup {
+  pathStrict = false,
 }
 
 -- These must be setup in this order:
@@ -64,25 +160,33 @@ require 'lspconfig'.rust_analyzer.setup {
   }
 }
 require 'lspconfig'.clangd.setup {}
-require 'lspconfig'.lua_ls.setup {}
+require 'lspconfig'.lua_ls.setup {
+  settings = {
+    Lua = {
+      completion = {
+        callSnippet = "Replace"
+      }
+    }
+  }
+}
 
 -- These are the main LSP keymappings.
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-  callback = function(ev)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+  callback = function()
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references)
+    vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
     vim.keymap.set('n', '<leader>f', function()
       vim.lsp.buf.format { async = true }
-    end, opts)
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-    vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+    end)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+    vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
   end,
 })
 
@@ -113,6 +217,14 @@ vim.o.updatetime = 200 -- Time in milliseconds
 -- gco: single line comment on line below
 -- gcA: single line comment at end of line
 require('Comment').setup()
+
+require("auto-save").setup {
+  execution_message = {
+    message = function() -- message to print on save
+      return ("Saved at " .. vim.fn.strftime("%H:%M:%S"))
+    end,
+  },
+}
 
 require 'nvim-treesitter.configs'.setup {
   highlight = {
@@ -184,25 +296,25 @@ local dap, dapui = require("dap"), require("dapui")
 dapui.setup()
 vim.keymap.set('n', '<leader>dc', function()
   dap.continue()
-end, opts)
+end)
 vim.keymap.set('n', '<leader>db', function()
   dap.toggle_breakpoint()
-end, opts)
+end)
 vim.keymap.set('n', '<leader>dt', function()
   dap.terminate()
-end, opts)
+end)
 vim.keymap.set('n', '<leader>ds', function()
   dap.step_over()
-end, opts)
+end)
 vim.keymap.set('n', '<leader>di', function()
   dap.step_into()
-end, opts)
+end)
 vim.keymap.set('n', '<leader>dr', function()
   dap.repl.open()
-end, opts)
+end)
 vim.keymap.set('n', '<leader>do', function()
   dapui.toggle()
-end, opts)
+end)
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
