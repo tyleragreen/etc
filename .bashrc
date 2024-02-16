@@ -1,18 +1,6 @@
-#==============================================================
-# Prompt
-#==============================================================
-
-parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
-
-export PS1="\W \$(parse_git_branch) \$ "
-
 export EDITOR=/usr/local/bin/nvim
 
-#==============================================================
 # Input mode
-#==============================================================
 set -o vi # vim
 
 # Ignore commands starting with spaces and duplicates in .bash_history
