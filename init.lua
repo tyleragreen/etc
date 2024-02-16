@@ -1,6 +1,13 @@
 vim.opt.colorcolumn = "100"
 
-require("auto-save").setup {}
+require("auto-save").setup {
+  execution_message = {
+    message = function() -- message to print on save
+      return ("Saved at " .. vim.fn.strftime("%H:%M:%S"))
+    end,
+  }
+}
+
 -- These must be setup in this order:
 -- 1. mason
 -- 2. mason-lspconfig
@@ -97,6 +104,15 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 
 -- You can adjust the delay for CursorHold event
 vim.o.updatetime = 200 -- Time in milliseconds
+
+-- Useful commands for adding comments:
+-- gcc: single line
+-- gc: multiple line in visual mode
+-- gb: multiple line block comment in visual mode
+-- gcO: single line comment on line above
+-- gco: single line comment on line below
+-- gcA: single line comment at end of line
+require('Comment').setup()
 
 require 'nvim-treesitter.configs'.setup {
   highlight = {
