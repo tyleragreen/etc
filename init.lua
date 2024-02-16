@@ -20,7 +20,7 @@ vim.opt.re = 0
 vim.opt.tabstop = 2
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
-vim.opt.backspace = {'indent', 'eol', 'start'}
+vim.opt.backspace = { 'indent', 'eol', 'start' }
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.hlsearch = true
@@ -32,16 +32,16 @@ vim.cmd('command W w')
 vim.cmd('command Wq wqall')
 
 -- Key remaps
-vim.api.nvim_set_keymap('n', '<leader>w', ':echo expand("%:p")<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>wc', ':let @+=expand("%:p")<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>bn<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>bp<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>x', ':lua CloseBufferOrVim()<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>m', ':lua ToggleLineNumbers()<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>w', ':echo expand("%:p")<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>wc', ':let @+=expand("%:p")<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>bn<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>bp<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>x', ':lua CloseBufferOrVim()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>m', ':lua ToggleLineNumbers()<CR>', { noremap = true })
 -- Markdown Preview and NERDTree mappings would need to be adjusted for Lua; refer to plugin docs for Lua setup.
 
 -- Functions
@@ -94,7 +94,12 @@ local plugins = {
 }
 
 
-require("lazy").setup(plugins)
+require("lazy").setup(plugins, {
+  checker = {
+    -- automatically check for plugin updates
+    eabled = true,
+  },
+})
 
 -- This references a plugin, so it must come after we call setup on lazy.
 vim.cmd('colorscheme edge')
@@ -285,7 +290,7 @@ require("noice").setup({
 require('lualine').setup {
   options = {
     theme = 'everforest',
-  }
+  },
 }
 
 require("bufferline").setup {}
