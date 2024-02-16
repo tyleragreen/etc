@@ -1,5 +1,6 @@
 vim.opt.colorcolumn = "100"
 
+require("auto-save").setup {}
 -- These must be setup in this order:
 -- 1. mason
 -- 2. mason-lspconfig

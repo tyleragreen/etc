@@ -19,6 +19,8 @@ Plug 'nvim-lua/plenary.nvim'
 " A slick popup window for switching between files and buffers
 Plug 'nvim-telescope/telescope.nvim'
 
+Plug 'Pocco81/auto-save.nvim'
+
 " My current color scheme
 Plug 'sainnhe/edge'
 
