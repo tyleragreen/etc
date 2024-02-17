@@ -42,7 +42,7 @@ vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<CR>', { norem
 vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>x', ':lua CloseBufferOrVim()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>m', ':lua ToggleLineNumbers()<CR>', { noremap = true })
--- Markdown Preview and NERDTree mappings would need to be adjusted for Lua; refer to plugin docs for Lua setup.
+vim.api.nvim_set_keymap('n', '<leader>o', ':only<CR>', { noremap = true })
 
 -- Functions
 CloseBufferOrVim = function()
@@ -74,11 +74,9 @@ local plugins = {
   'nvim-lua/plenary.nvim',
   'nvim-telescope/telescope.nvim',
   'sainnhe/edge',
-  'iamcco/markdown-preview.nvim',
   'folke/noice.nvim',
   'MunifTanjim/nui.nvim',
   'rcarriga/nvim-notify',
-  'preservim/nerdtree',
   'neovim/nvim-lspconfig',
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-nvim-lsp',
@@ -91,6 +89,8 @@ local plugins = {
   'williamboman/mason-lspconfig.nvim',
   'numToStr/Comment.nvim',
   'nvim-treesitter/nvim-treesitter',
+  'sindrets/diffview.nvim',
+  'stevearc/oil.nvim',
 }
 
 
@@ -329,22 +329,6 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
-
-local file = "~/Documents/repos/kotlin-debug-adapter/adapter/build/install/adapter/bin/kotlin-debug-adapter"
-dap.configurations.kotlin = {
-  {
-    type = 'kotlin',
-    request = 'launch',
-    mainClass = '{}Kt',
-    projectRoot = "${workspaceFolder}",
-    name = "Launch file",
-  },
-}
-dap.adapters.kotlin = {
-  type = 'executable',
-  command = file,
-  options = {
-    source_filetype = 'kotlin',
-  }
-}
 dap.set_log_level("DEBUG")
+
+require("oil").setup {}
