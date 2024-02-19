@@ -46,6 +46,13 @@ vim.api.nvim_set_keymap('n', '<leader>o', ':only<CR>', { noremap = true })
 
 -- Functions
 CloseBufferOrVim = function()
+  -- First, try to close any tabs if there are more than one
+  local num_tabs = vim.fn.tabpagenr('$')
+  if num_tabs > 1 then
+    vim.cmd('tabclose')
+    return
+  end
+
   local num_buffers = vim.fn.len(vim.fn.filter(vim.fn.range(1, vim.fn.bufnr('$')), 'buflisted(v:val)'))
   if num_buffers == 1 then
     vim.cmd('qall')
@@ -91,6 +98,7 @@ local plugins = {
   'nvim-treesitter/nvim-treesitter',
   'sindrets/diffview.nvim',
   'stevearc/oil.nvim',
+  'NeogitOrg/neogit',
 }
 
 
@@ -332,3 +340,4 @@ end
 dap.set_log_level("DEBUG")
 
 require("oil").setup {}
+require("neogit").setup {}
