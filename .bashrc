@@ -22,6 +22,7 @@ alias u2="cd ../.."
 alias u3="cd ../../.."
 alias u4="cd ../../../.."
 alias hi="history"
+alias c="clear"
 alias tr="cd ~/Documents/repos"
 
 alias v="nvim"
