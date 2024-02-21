@@ -33,32 +33,56 @@ vim.cmd('command Wq wqall')
 
 -- Key remaps
 vim.api.nvim_set_keymap('n', '<leader>w', ':echo expand("%:p")<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>wc', ':let @+=expand("%:p")<CR>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>wc', ':let @+=expand("%:p")<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>bn<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>bp<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>x', ':lua CloseBufferOrVim()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>x', ':lua Close()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>m', ':lua ToggleLineNumbers()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>o', ':only<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>ng', '<cmd>Neogit<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gdo', '<cmd>DiffviewOpen<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gdm', '<cmd>DiffviewOpen origin/main..HEAD<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gdf', '<cmd>DiffviewFileHistory<CR>', { noremap = true })
 
 -- Functions
-CloseBufferOrVim = function()
-  -- First, try to close any tabs if there are more than one
+
+-- Close in this order:
+-- - tab
+-- - horizontal/vertical split
+-- - buffer
+-- - Vim itself
+Close = function()
+  -- Close a tab if we have a second one. Plugins such as diffview and neogit use this model
   local num_tabs = vim.fn.tabpagenr('$')
   if num_tabs > 1 then
     vim.cmd('tabclose')
     return
   end
 
-  local num_buffers = vim.fn.len(vim.fn.filter(vim.fn.range(1, vim.fn.bufnr('$')), 'buflisted(v:val)'))
-  if num_buffers == 1 then
-    vim.cmd('qall')
-  else
-    vim.cmd('bdelete')
+  -- Close a split if we have one
+  -- There may be a way to do this with vim.fn.winnr('$'), but I wasn't able to get it to work.
+  -- Using pcall here is conceptually similar to a try-catch
+  local success, _ = pcall(function()
+    vim.cmd('close')
+    return "This will be the result if no error occurs"
+  end)
+  -- We closed a split!
+  if success then
+    return
   end
+
+  -- Close a buffer if we have a second one.
+  local num_buffers = vim.fn.len(vim.fn.filter(vim.fn.range(1, vim.fn.bufnr('$')), 'buflisted(v:val)'))
+  if num_buffers > 1 then
+    vim.cmd('bdelete')
+    return
+  end
+
+  vim.cmd('qall')
 end
 
 ToggleLineNumbers = function()
