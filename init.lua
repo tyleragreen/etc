@@ -43,7 +43,7 @@ vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', { nor
 vim.api.nvim_set_keymap('n', '<leader>x', ':lua Close()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>m', ':lua ToggleLineNumbers()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>o', ':only<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>ng', '<cmd>Neogit<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>Neogit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gdo', '<cmd>DiffviewOpen<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gdm', '<cmd>DiffviewOpen origin/main..HEAD<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gdf', '<cmd>DiffviewFileHistory<CR>', { noremap = true })
