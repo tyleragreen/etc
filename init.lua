@@ -154,6 +154,7 @@ require("mason-lspconfig").setup {
     "rust_analyzer",
     "pyright",
     "clangd",
+    "taplo",
   },
 }
 
@@ -206,6 +207,7 @@ require 'lspconfig'.lua_ls.setup {
     }
   }
 }
+require 'lspconfig'.taplo.setup {}
 
 -- These are the main LSP keymappings.
 vim.api.nvim_create_autocmd('LspAttach', {
