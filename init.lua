@@ -42,11 +42,12 @@ vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<CR>', { norem
 vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>x', ':lua Close()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>m', ':lua ToggleLineNumbers()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>o', ':only<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>o', '<cmd>only<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>O', '<cmd>Oil --float<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>Neogit<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gdo', '<cmd>DiffviewOpen<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gdm', '<cmd>DiffviewOpen origin/main..HEAD<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gdf', '<cmd>DiffviewFileHistory<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gd', '<cmd>DiffviewOpen<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gm', '<cmd>DiffviewOpen origin/main..HEAD<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gl', '<cmd>execute "DiffviewFileHistory" expand("%:p")<CR>', { noremap = true })
 
 -- Functions
 
