@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cp .bashrc ~/
-cp .bash_profile ~/
+cp shell/.bashrc ~/
+cp shell/.bash_profile ~/
+cp shell/starship.toml ~/.config/starship.toml
 # For some reason, neodev.nvim requires this directory to be present to load the vim symbols into the LSP. I don't understand why!
 mkdir -p ~/.config/nvim/lua
-cp init.lua ~/.config/nvim/
-cp starship.toml ~/.config/starship.toml
-cp .tmux.conf ~/
+cp editor/init.lua ~/.config/nvim/
+cp terminal/.tmux.conf ~/

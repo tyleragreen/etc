@@ -366,5 +366,9 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 dap.set_log_level("DEBUG")
 
-require("oil").setup {}
+require("oil").setup {
+  view_options = {
+    show_hidden = true,
+  }
+}
 require("neogit").setup {}

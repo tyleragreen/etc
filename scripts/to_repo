@@ -1,8 +1,8 @@
 #!/bin/bash
 
-cp ~/.bashrc .
-cp ~/.bash_profile .
-cp ~/.config/nvim/init.lua .
-cp ~/.config/nvim/lazy-lock.json .
-cp ~/.config/starship.toml .
-cp ~/.tmux.conf .
+cp ~/.bashrc shell/
+cp ~/.bash_profile shell/
+cp ~/.config/starship.toml shell/
+cp ~/.config/nvim/init.lua editor/
+cp ~/.config/nvim/lazy-lock.json editor/
+cp ~/.tmux.conf terminal/
