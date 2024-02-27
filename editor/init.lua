@@ -124,6 +124,7 @@ local plugins = {
   'sindrets/diffview.nvim',
   'stevearc/oil.nvim',
   'NeogitOrg/neogit',
+  'ThePrimeagen/harpoon',
 }
 
 
