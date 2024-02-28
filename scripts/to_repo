@@ -3,6 +3,9 @@
 cp ~/.bashrc shell/
 cp ~/.bash_profile shell/
 cp ~/.config/starship.toml shell/
+cp ~/.deltagitconfig shell/
+
 cp ~/.config/nvim/init.lua editor/
 cp ~/.config/nvim/lazy-lock.json editor/
+
 cp ~/.tmux.conf terminal/
