@@ -13,10 +13,17 @@ export HISTCONTROL=ignoreboth
 #--------------------------------------------------------------
 # Bash basics
 
-alias ll="ls -lha"
-alias llr="ls -lR"
-alias llt="ls -lhtr"
+# eza is a modern ls replacement written in Rust. It was originall called exa, but is now
+# maintained under the name eza.
+#
+# Change the dark blue of the git modified character and the datetime to a lighter blue.
+# Reference: https://the.exa.website/docs/colour-themes
+export EZA_COLORS="gm=1;34:da=1;34"
+alias ll="eza -lao --icons=always --git-ignore --git"
+alias llR="eza -laoT --icons=always --git-ignore --git"
+alias llt="eza -lao -s modified --icons=always --git-ignore --git"
 alias llf="ls -lhtrd $PWD/*"
+
 alias u="cd .."
 alias u2="cd ../.."
 alias u3="cd ../../.."
