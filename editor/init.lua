@@ -194,7 +194,7 @@ require 'lspconfig'.rust_analyzer.setup {
   settings = {
     ["rust-analyzer"] = {
       cargo = {
-        features = { "c_stdlib" }
+        features = { "c_stdlib", "llvm_backend" }
       }
     }
   }

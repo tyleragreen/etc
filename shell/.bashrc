@@ -36,6 +36,11 @@ alias v="nvim"
 alias g="grep -rIi"
 alias fz="fd | fzf | xargs nvim"
 
+alias c="bat"
+cb() {
+  cat "$1" | pbcopy
+}
+
 alias t="tmux new-session -c ~/Documents/repos/ -s"
 alias tl="tmux list-sessions"
 alias ta="tmux attach-session -t"
