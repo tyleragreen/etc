@@ -36,7 +36,7 @@ alias v="nvim"
 alias g="grep -rIi"
 alias fz="fd | fzf | xargs nvim"
 
-alias c="bat"
+alias cat="bat"
 cb() {
   cat "$1" | pbcopy
 }
