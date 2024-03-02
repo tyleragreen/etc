@@ -19,6 +19,7 @@ export HISTCONTROL=ignoreboth
 # Change the dark blue of the git modified character and the datetime to a lighter blue.
 # Reference: https://the.exa.website/docs/colour-themes
 export EZA_COLORS="gm=1;34:da=1;34"
+alias ls="eza"
 alias ll="eza -lao --icons=always --git-ignore --git"
 alias llR="eza -laoT --icons=always --git-ignore --git"
 alias llt="eza -lao -s modified --icons=always --git-ignore --git"

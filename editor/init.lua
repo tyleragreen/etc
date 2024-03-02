@@ -48,6 +48,11 @@ vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>Neogit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', '<cmd>DiffviewOpen<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gm', '<cmd>DiffviewOpen origin/main..HEAD<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gl', '<cmd>execute "DiffviewFileHistory" expand("%:p")<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>so', '<cmd>Lspsaga outline<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>st', '<cmd>Lspsaga term_toggle<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>sp', '<cmd>Lspsaga peek_definition<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'gr', '<cmd>Lspsaga finder ref<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'gi', '<cmd>Lspsaga finder imp<CR>', { noremap = true })
 
 -- Functions
 
@@ -125,6 +130,7 @@ local plugins = {
   'stevearc/oil.nvim',
   'NeogitOrg/neogit',
   'ThePrimeagen/harpoon',
+  'nvimdev/lspsaga.nvim',
 }
 
 
@@ -216,8 +222,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function()
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references)
+    -- Look for the Lspsaga keymap
+    -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
+    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references)
     vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help)
@@ -294,6 +301,8 @@ require 'nvim-treesitter.configs'.setup {
     "jsonc",
     "kotlin",
     "lua",
+    "markdown",
+    "markdown_inline",
     "python",
     "regex",
     "rust",
@@ -373,3 +382,8 @@ require("oil").setup {
   }
 }
 require("neogit").setup {}
+require('lspsaga').setup {
+  lightbulb = {
+    enable = false
+  }
+}
