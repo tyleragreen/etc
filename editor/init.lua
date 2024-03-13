@@ -168,6 +168,8 @@ require("mason-lspconfig").setup {
     "eslint", -- JavaScript
     "intelephense", -- PHP
     "sqlls", -- SQL
+    "dockerls", -- Docker
+    "bashls", -- Bash
   },
 }
 
@@ -225,6 +227,8 @@ require 'lspconfig'.tsserver.setup {}
 require 'lspconfig'.eslint.setup {}
 require 'lspconfig'.intelephense.setup {}
 require 'lspconfig'.sqlls.setup {}
+require 'lspconfig'.dockerls.setup {}
+require 'lspconfig'.bashls.setup {}
 
 -- These are the main LSP keymappings.
 vim.api.nvim_create_autocmd('LspAttach', {
