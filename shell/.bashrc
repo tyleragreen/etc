@@ -6,11 +6,11 @@ set -o vi # vim
 # Ignore commands starting with spaces and duplicates in .bash_history
 export HISTCONTROL=ignoreboth
 
-#==============================================================
+#==================================================================================================
 # Aliases
-#==============================================================
+#==================================================================================================
 
-#--------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
 # Bash basics
 
 # eza is a modern ls replacement written in Rust. It was originall called exa, but is now
@@ -51,7 +51,7 @@ alias evrc="v ~/.config/nvim/init.lua"
 alias esh="v ~/.ssh/config"
 alias s="source ~/.bashrc"
 
-#--------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
 # Git
 
 alias gs="git status"
@@ -59,6 +59,8 @@ alias gl="git log"
 alias gb="git branch"
 alias gbd="git branch -D"
 alias gd="git diff"
+# I don't need gdl anymore technically but my muscle memory keeps using it
+alias gdl="git diff"
 alias gds="git diff --staged"
 alias ga="git add"
 alias gp="git push"
