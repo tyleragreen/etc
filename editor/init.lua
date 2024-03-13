@@ -167,6 +167,7 @@ require("mason-lspconfig").setup {
     "tsserver", -- JavaScript
     "eslint", -- JavaScript
     "intelephense", -- PHP
+    "sqlls", -- SQL
   },
 }
 
@@ -223,6 +224,7 @@ require 'lspconfig'.taplo.setup {}
 require 'lspconfig'.tsserver.setup {}
 require 'lspconfig'.eslint.setup {}
 require 'lspconfig'.intelephense.setup {}
+require 'lspconfig'.sqlls.setup {}
 
 -- These are the main LSP keymappings.
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -314,6 +316,7 @@ require 'nvim-treesitter.configs'.setup {
     "python",
     "regex",
     "rust",
+    "sql",
     "toml",
     "typescript",
     "yaml",
