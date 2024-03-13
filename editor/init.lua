@@ -48,6 +48,7 @@ vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>Neogit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', '<cmd>DiffviewOpen<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gm', '<cmd>DiffviewOpen origin/main..HEAD<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gl', '<cmd>execute "DiffviewFileHistory" expand("%:p")<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>li', '<cmd>LspInfo<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>so', '<cmd>Lspsaga outline<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>st', '<cmd>Lspsaga term_toggle<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>sp', '<cmd>Lspsaga peek_definition<CR>', { noremap = true })
@@ -158,13 +159,14 @@ require("mason-lspconfig").setup {
   -- This prevents us from needing to run: rustup component add rust-analyzer
   -- To confirm it is installed, run: rustup component list
   ensure_installed = {
-    "lua_ls",
-    "rust_analyzer",
-    "pyright",
-    "clangd",
-    "taplo",
-    "tsserver",
-    "eslint",
+    "lua_ls", -- Lua
+    "rust_analyzer", -- Rust
+    "pyright", -- Python
+    "clangd", -- C/C++
+    "taplo", -- TOML
+    "tsserver", -- JavaScript
+    "eslint", -- JavaScript
+    "intelephense", -- PHP
   },
 }
 
@@ -220,6 +222,7 @@ require 'lspconfig'.lua_ls.setup {
 require 'lspconfig'.taplo.setup {}
 require 'lspconfig'.tsserver.setup {}
 require 'lspconfig'.eslint.setup {}
+require 'lspconfig'.intelephense.setup {}
 
 -- These are the main LSP keymappings.
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -307,6 +310,7 @@ require 'nvim-treesitter.configs'.setup {
     "lua",
     "markdown",
     "markdown_inline",
+    "php",
     "python",
     "regex",
     "rust",
